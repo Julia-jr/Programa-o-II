@@ -1,5 +1,5 @@
 import os
-from models import Headset
+from models import Headset, Embalagem, Microfone
 from config import db, db_file
 
 
@@ -34,7 +34,25 @@ if __name__ == '__main__':
     db.session.add(h2)
     db.session.commit()
     
-    print(h1)
-    print(h2)
-    print(h2.json())
+    #print(h1)
+    #print(h2)
+    #print(h2.json())
+
+    e1 = Embalagem(material = "papel",
+                   cor = "cor de papelão", 
+                   headset = h1)
+
+    m1 = Microfone(led = "azul",
+                   decibeis = "666",
+                   headset = h1)
+    
+    db.session.add(e1)
+    db.session.add(m1)
+    db.session.commit()
+
+
+    print(e1)
+    print(m1)
+    print(e1.json())
+    print(e1.json())
     
